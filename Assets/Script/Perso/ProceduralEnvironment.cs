@@ -29,11 +29,13 @@ public class ProceduralEnvironment : MonoBehaviour
         GenerateChunksAroundPlayer();
     }
 
+    #region Chunk Spawn Methods
     private void GenerateChunksAroundPlayer()
     {
         Vector2Int playerChunkCoord = GetChunkCoordFromPosition(_playerTransform.position);
         
-        HashSet<Vector2Int> chunksToKeep = new HashSet<Vector2Int>(); //Chunks qui resteront
+        // Sauvegarde la position des chunks a garder s'il sont dans la range
+        HashSet<Vector2Int> chunksToKeep = new HashSet<Vector2Int>();
 
         for (int x = -_gridSize / 2; x < _gridSize / 2; x++)
         {
@@ -42,6 +44,7 @@ public class ProceduralEnvironment : MonoBehaviour
                 Vector2Int chunkCoord = new Vector2Int(playerChunkCoord.x + x, playerChunkCoord.y + z);
                 chunksToKeep.Add(chunkCoord); 
 
+                // Spawn un chunk uniquement si un chunk n'est pas dans les coordonnées de chunkTKeep
                 if (!_loadedChunks.ContainsKey(chunkCoord)) 
                 {
                     LoadChunk(chunkCoord);
@@ -69,7 +72,9 @@ public class ProceduralEnvironment : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    // Récupération de la position 
     private Vector2Int GetChunkCoordFromPosition(Vector3 position)
     {
         int x = Mathf.FloorToInt(position.x / _chunkSize);
@@ -77,16 +82,20 @@ public class ProceduralEnvironment : MonoBehaviour
         return new Vector2Int(x, z);
     }
 
+    #region Load & Unload Behaviour
+    // Instantie les nouveaux chunk 
     private void LoadChunk(Vector2Int coord)
     {
         Vector3 chunkPosition = new Vector3(coord.x * _chunkSize, 0, coord.y * _chunkSize);
 
+        // Selection aléatoire dans le chunk 
         GameObject selectedPrefab = _environmentPrefabs[Random.Range(0, _environmentPrefabs.Length)];
         GameObject newChunk = Instantiate(selectedPrefab, chunkPosition, Quaternion.identity);
 
         _loadedChunks.Add(coord, newChunk);
     }
 
+    // Detruit les chunks 
     private void UnloadChunk(Vector2Int coord)
     {
         if (_loadedChunks.ContainsKey(coord))
@@ -95,7 +104,9 @@ public class ProceduralEnvironment : MonoBehaviour
             _loadedChunks.Remove(coord); 
         }
     }
+    #endregion
     
+    #region Debugging Methods
     // --- Gizmos pour afficher la grille ---
     private void OnDrawGizmos()
     {
@@ -115,4 +126,5 @@ public class ProceduralEnvironment : MonoBehaviour
             }
         }
     }
+    #endregion
 }
