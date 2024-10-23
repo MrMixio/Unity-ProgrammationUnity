@@ -1,29 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+namespace Script
 {
-    private State _currentState;
-
-    private void Start()
+    public class StateMachine : MonoBehaviour
     {
-        DontDestroyOnLoad(gameObject);
+        private State _currentState;
+
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
         
-        _currentState = GetComponent<State>();
-        _currentState.Enter();
-    }
+            _currentState = GetComponent<State>();
+            _currentState.Enter();
+        }
 
-    private void Update()
-    {
-        _currentState.Tick();
-    }
+        private void Update()
+        {
+            _currentState.Tick();
+        }
 
-    public void ChangeState(State newInitialisation)
-    {
-        _currentState.Exit();
-        _currentState = newInitialisation;  
-        _currentState.Enter();
+        public void ChangeState(State newInitialisation)
+        {
+            _currentState.Exit();
+            _currentState = newInitialisation;  
+            _currentState.Enter();
+        }
+    
     }
 }

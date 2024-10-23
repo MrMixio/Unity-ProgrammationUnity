@@ -296,7 +296,10 @@ GameObject:
   - component: {fileID: 1464291433}
   - component: {fileID: 1464291434}
   - component: {fileID: 1464291432}
-  - component: {fileID: 1464291431}
+  - component: {fileID: 1464291435}
+  - component: {fileID: 1464291436}
+  - component: {fileID: 1464291437}
+  - component: {fileID: 1464291438}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -319,18 +322,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1464291431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464291428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197794287a11419187510035411ada8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1464291432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba515e381a3460ca0428dbc32816df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGameButton: {fileID: 0}
 --- !u!114 &1464291433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +362,56 @@ MonoBehaviour:
   sceneToLoad:
     asset: {fileID: 102900000, guid: 42b775bb01b36f74d9e47e4e6ffcd795, type: 3}
     guid: 42b775bb01b36f74d9e47e4e6ffcd795
+--- !u!114 &1464291435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464291428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9bb7a9e8f6422cb04db11e7691aed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1464291436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464291428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197794287a11419187510035411ada8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseButton: {fileID: 0}
+  gameOverButton: {fileID: 0}
+--- !u!114 &1464291437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464291428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9683d5bc2584b54a2ef2ec89b226c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1464291438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464291428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5dba531d19ce54a90eb8d6f08572c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579726645
 GameObject:
   m_ObjectHideFlags: 0

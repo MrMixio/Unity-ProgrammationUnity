@@ -1,21 +1,34 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Menu : State
+namespace Script
 {
-    public override void Enter()
+    public class Menu : State
     {
-        Debug.Log("Enter Menu");
-        
-        
-    }
+        private StateMachine stateMachine;
+        public Button startGameButton;
+    
+        public override void Enter()
+        {
+            Debug.Log("Enter Menu");
+            startGameButton = GameObject.Find("StartButton").GetComponent<Button>();
+            stateMachine = FindObjectOfType<StateMachine>();
+            startGameButton.onClick.AddListener(StartGame);
+        }
 
-    public override void Tick()
-    {
-        Debug.Log("Tick Menu");
-    }
+        public override void Tick()
+        {
+            Debug.Log("Tick Menu");
+        }
 
-    public override void Exit()
-    {
-        Debug.Log("Exit Menu");
+        public override void Exit()
+        {
+            Debug.Log("Exit Menu");
+        }
+    
+        public void StartGame()
+        {
+            GetComponent<StateMachine>().ChangeState(GetComponent<LoadGame>());
+        }
     }
 }
